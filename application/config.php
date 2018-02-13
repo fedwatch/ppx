@@ -236,4 +236,32 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+
+    'desolate'               => [
+        // 模板引擎类型 支持 php think 支持扩展
+        'type'         => 'Think',
+        // 模板路径
+        'view_path'    => '',
+        // 模板后缀
+        'view_suffix'  => 'html',
+        // 模板文件名分隔符
+        'view_depr'    => DS,
+        // 模板引擎普通标签开始标记
+        'tpl_begin'    => '{',
+        // 模板引擎普通标签结束标记
+        'tpl_end'      => '}',
+        // 标签库标签开始标记
+        'taglib_begin' => '{',
+        // 标签库标签结束标记
+        'taglib_end'   => '}',
+    ],
+
+    'DATA_CACHE_PREFIX' => 'Redis_',//缓存前缀
+    'DATA_CACHE_TYPE'=>'Redis',//默认动态缓存为Redis
+    'REDIS_RW_SEPARATE' => true, //Redis读写分离 true 开启
+    'REDIS_HOST'=>'192.168.91.102', //redis服务器ip，多台用逗号隔开；读写分离开启时，第一台负责写，其它[随机]负责读；
+    'REDIS_PORT'=>'6379',//端口号
+    'REDIS_TIMEOUT'=>'300',//超时时间
+    'REDIS_PERSISTENT'=>false,//是否长连接 false=短连接
+    'REDIS_AUTH'=>'',//AUTH认证密码
 ];
