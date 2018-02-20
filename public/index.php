@@ -11,7 +11,19 @@
 
 // [ 应用入口文件 ]
 
+
+//redirect('/New/category/cate_id/2', 5, '页面跳转中...');
+
+//header("location:/Index");
+
+header("Refresh:0;url=./Index");
+
+
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
+
 // 加载框架引导文件
 require __DIR__ . '/../thinkphp/start.php';
+
+
+
