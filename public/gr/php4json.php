@@ -1,9 +1,6 @@
 <?php header("Content-type: text/html; charset=utf-8"); ?>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
-    <meta http-equiv="refresh" content="5">
-</head>
+
 <body>
 <?php
 $now = date('Y-m-d H:i:s');
