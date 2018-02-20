@@ -1,7 +1,7 @@
 <?php header("Content-type: text/html; charset=utf-8"); ?>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
     <meta http-equiv="refresh" content="5">
 </head>
 <body>
@@ -17,36 +17,36 @@ echo '<br/>';
 $src = 'http://f.apiplus.cn/newly.do?code=cqssc&format=json';
 echo "<br/>采集地址：{$src}<br/><br/>";
 //防止GET本地缓存，增加随机数
-$src .= (strpos($src,'?')>0 ? '&':'?').'_='.time();
+$src .= (strpos($src, '?') > 0 ? '&' : '?') . '_=' . time();
 
 $ch = curl_init();
 $timeout = 5;
-curl_setopt ($ch, CURLOPT_URL, $src);
-curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+curl_setopt($ch, CURLOPT_URL, $src);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
 $html = curl_exec($ch);
 curl_close($ch);
 //
 //echo $html;
 //
 //$html = file_get_contents($src);
-$json = json_decode($html,true);
+$json = json_decode($html, true);
 
-if (isset($json['rows'])){
-	echo "{$now}共采集到{$json['rows']}行开奖数据：<br/>";
-	foreach($json['data'] as $r){
-		$expect = preg_replace("/^(\d{8})(\d{3})$/","\\1-\\2",$r['expect']);
-		$opencode = $r['opencode'];
-		$opentime = $r['opentime'];
-		echo "开奖期号：{$expect}<br/>";
-		echo "开奖号码：{$opencode}<br/>";
-		echo "开奖时间：{$opentime}<br/>";
-		echo '<br/>';
-		//TODO: 分析数据、对比数据，并写入数据库
-	}
-}else{
-	echo "采集失败，返回提示：<br/>";
-	echo $html;
+if (isset($json['rows'])) {
+    echo "{$now}共采集到{$json['rows']}行开奖数据：<br/>";
+    foreach ($json['data'] as $r) {
+        $expect = preg_replace("/^(\d{8})(\d{3})$/", "\\1-\\2", $r['expect']);
+        $opencode = $r['opencode'];
+        $opentime = $r['opentime'];
+        echo "开奖期号：{$expect}<br/>";
+        echo "开奖号码：{$opencode}<br/>";
+        echo "开奖时间：{$opentime}<br/>";
+        echo '<br/>';
+        //TODO: 分析数据、对比数据，并写入数据库
+    }
+} else {
+    echo "采集失败，返回提示：<br/>";
+    echo $html;
 }
 ?>
 </body>
